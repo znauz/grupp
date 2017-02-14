@@ -1,0 +1,16 @@
+{
+  "name": "nation-pub-skeleton",
+  "version": "0.0.1",
+  "description": "Stub for creating an ordering system",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mikael Laaksoharju",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "socket.io": "^1.7.2",
+    "vue": "^2.1.5"
+  }
+}
