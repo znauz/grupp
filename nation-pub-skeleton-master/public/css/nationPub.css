@@ -1,0 +1,7 @@
+/* Stylesheet document */
+@import 'https://fonts.googleapis.com/css?family=Pacifico|Dosis';
+
+button:hover {
+    background-color: #ff0000;
+    cursor: pointer;
+}
