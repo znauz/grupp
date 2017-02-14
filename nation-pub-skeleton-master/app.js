@@ -17,35 +17,35 @@ var lang = "sv";
 
 // get the JSON objects for the dictated language. Wonder if functions take arguments? ;-)
 var getLabelsAndMenu = function() {
-  var ui = require("./data/"+ lang +"/ui.json");
-  var menu = require("./data/"+ lang +"/menu.json");
-  return {uiLabels: ui, menu: menu};
+    var ui = require("./data/"+ lang +"/ui.json");
+    var menu = require("./data/"+ lang +"/menu.json");
+    return {uiLabels: ui, menu: menu};
 };
 
 // Store orders in a an anonymous class for now. 
 var orders = function() {
-  var orders = {};
+    var orders = {};
 
-  var addOrder = function(dish) {
-    orders[dish.orderId] ={};
-    orders[dish.orderId].orderItems = dish.orderItems;
-    orders[dish.orderId].done = false;
-  };
+    var addOrder = function(dish) {
+        orders[dish.orderId] ={};
+        orders[dish.orderId].orderItems = dish.orderItems;
+        orders[dish.orderId].done = false;
+    };
 
-  var getAll = function() {
-    return orders;
-  };
+    var getAll = function() {
+        return orders;
+    };
 
-  var markDone = function(orderId) {
-    orders[orderId].done = true;
-  };
+    var markDone = function(orderId) {
+        orders[orderId].done = true;
+    };
 
-  //expose functions
-  return {
-    addOrder : addOrder,
-    getAll : getAll,
-    markDone : markDone
-  };
+    //expose functions
+    return {
+        addOrder : addOrder,
+        getAll : getAll,
+        markDone : markDone
+    };
 }(); // instantiate the class immediately
 
 // Serve static assets from public/
@@ -55,30 +55,30 @@ app.use('/vue', express.static(path.join(__dirname, '/node_modules/vue/dist/')))
 
 // Serve diner.html as root page
 app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, 'views/diner.html'));
+    res.sendFile(path.join(__dirname, 'views/diner.html'));
 });
 // Serve kitchen.html as subpage
 app.get('/kitchen', function(req, res) {
-  res.sendFile(path.join(__dirname, 'views/kitchen.html'));
+    res.sendFile(path.join(__dirname, 'views/kitchen.html'));
 });
 
 io.on('connection', function(socket) {
-  // Send list of orders and text labels when a client connects
-  io.emit('initialize', { orders: orders.getAll(), 
-                          labelsAndMenu: getLabelsAndMenu() });
+    // Send list of orders and text labels when a client connects
+    io.emit('initialize', { orders: orders.getAll(), 
+                            labelsAndMenu: getLabelsAndMenu() });
 
-  // When someone orders something
-  socket.on('order', function(dish) {
-    orders.addOrder(dish);
-    io.emit('currentQueue', orders.getAll());
-  });
+    // When someone orders something
+    socket.on('order', function(dish) {
+        orders.addOrder(dish);
+        io.emit('currentQueue', orders.getAll());
+    });
 
-  socket.on('orderDone', function(orderId) {
-    orders.markDone(orderId);
-    io.emit('currentQueue', orders.getAll());
-  });
+    socket.on('orderDone', function(orderId) {
+        orders.markDone(orderId);
+        io.emit('currentQueue', orders.getAll());
+    });
 });
 
 http.listen(app.get('port'), function() {
-  console.log('Server listening on port ' + app.get('port'));
+    console.log('Server listening on port ' + app.get('port'));
 });

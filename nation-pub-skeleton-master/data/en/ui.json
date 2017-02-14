@@ -1,9 +1,9 @@
 {
-  "ordersFinished" : "Finshed orders",
-  "ordersInQueue" : "Order queue",
-  "placeOrder" : "Place order",
-  "mains" : "Main courses",
-  "sideorders" : "Side orders",
-  "drinks" : "Drinks",
-  "ready" : "Done"
+    "ordersFinished" : "Finshed orders",
+    "ordersInQueue" : "Order queue",
+    "placeOrder" : "Place order",
+    "mains" : "Main courses",
+    "sideorders" : "Side orders",
+    "drinks" : "Drinks",
+    "ready" : "Done"
 }
