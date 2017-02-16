@@ -7,41 +7,61 @@
     <link rel="stylesheet" href="css/nationPub.css">
   </head>
   <body>
+
+    <!--Receipt/kvitto-->
     <table id="ordering">
       <tr>
         <td class="layout" id="receipt">
           <p> Beställning: </p>
+	  <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
         </td>
         <td id="orders">
-          <h2>{{ uiLabels.mains }}</h2>
-          <div id="mealOrders" v-for="menuitem in menu.foods">
-            <h2>
-              <label>
-                <input type="checkbox" v-model="mainDish" :value="menuitem.label" />
-                {{menuitem.label}}, {{menuitem.price}}:-
-              </label>
-            </h2>
-            <div>
-              Extra: 
-              <label v-for="detail in menuitem.details">
-                <input type="checkbox" v-model="extras" :value="menuitem.label + '::' + detail.extra" />
-                {{detail.extra}}, {{detail.price}}:-
-              </label>      
+	  <div class="tab">
+	    <a href="javascript:void(0)" class="tablinks" onclick="openFood(event, 'Mat')">Mat</a>
+	    <a href="javascript:void(0)" class="tablinks" onclick="openFood(event, 'Dryck')">Dryck</a>
+	  </div>
+
+	  <!--MAT-TAB -->
+	  <div id="Mat" class="tabcontent" style="display: block;">
+	    <h2>Emil's Burgare's</h2>
+            <div id="mealOrders" v-for="menuitem in menu.foods">
+              <h2>
+		<label>
+                  <button type="button" v-on:click="addItem(menuitem.label)" v-model="mainDish" :value="menuitem.label" />
+                  {{menuitem.label}} , {{menuitem.price}}:-
+		  
+		</label>
+		
+              </h2>
+	      
+              <div>
+		Extra: 
+		<label v-for="detail in menuitem.details">
+                  <input type="checkbox" v-model="extras" :value="menuitem.label + '::' + detail.extra" />
+                  {{detail.extra}}, {{detail.price}}:-
+		</label>      
+              </div>
             </div>
-          </div>
-          <h2>{{ uiLabels.sideorders }}</h2>
-          <label v-for="menuitem in menu.sideorders">
-            <input type="checkbox" name="item[]" :value="menuitem.label" />
-            {{menuitem.label}}, {{menuitem.price}}:-
-          </label>
-          <h2>{{ uiLabels.drinks }}</h2>
-          <label v-for="menuitem in menu.drinks">
-            <input type="checkbox" name="item[]" :value="menuitem.label" />
-            {{menuitem.label}}, {{menuitem.size}} cl, {{menuitem.price}}:-
-            <br> </br>
-          </label>
-          <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
+            <h2>{{ uiLabels.sideorders }}</h2>
+            <label v-for="menuitem in menu.sideorders">
+              <input type="checkbox" name="item[]" :value="menuitem.label" />
+              {{menuitem.label}}, {{menuitem.price}}:-
+            </label>
+	  </div>
+
+	  <!--DRYCKER-TAB -->
+	  <div id="Dryck" class="tabcontent">
+	    <h2>{{ uiLabels.drinks }}</h2>
+	    <label v-for="menuitem in menu.drinks">
+	      <button type="button" v-on:click="addItem(menuitem.label)"name="item[]" :value="menuitem.label" />
+	      {{menuitem.label}}, {{menuitem.size}} cl, {{menuitem.price}}:-
+	      <br> </br>
+	    </label>
+	    
+	  </div>
         </td>
+
+	<!--BESTÄLLNINGAR -->
         <td class="layout" id="progress">
           <h2> Väntande beställningar </h2>
           <h2>{{ uiLabels.ordersInProgress }}</h2>

@@ -14,7 +14,7 @@
 }
 
 #receipt {
-    background-color: #ff00ff;
+    background-color: green;
 }
 
 #orders {
@@ -36,4 +36,51 @@
 button:hover {
     background-color: #ff0000;
     cursor: pointer;
+}
+
+
+/* Style the tab */
+div.tab {
+    overflow: hidden;
+    border: 3px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the links inside the tab */
+div.tab a {
+   
+    display: inline-block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-family: "Courier New";
+    font-weight: bold;
+    font-size: 32px;
+    width: 40%;
+    
+
+    
+}
+
+
+
+/* Change background color of links on hover */
+div.tab a:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+div.tab a:focus, .active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+    height: 1000px;
 }
