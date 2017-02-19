@@ -13,6 +13,15 @@
       <tr>
         <td class="layout" id="receipt">
           <p> Beställning: </p>
+          <table id="currentOrder"> </table>
+          <div id="totalRepresentation">
+            <table id="totalTable">
+              <tr>
+                <td class="totalSummation"><h3>Total:</h3></td>
+                <td class="totalSummation"><h3> {{total}} kr </h3></td>
+              </tr>
+            </table>
+          </div>
 	  <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
         </td>
         <td id="orders">
@@ -27,7 +36,7 @@
             <div id="mealOrders" v-for="menuitem in menu.foods">
               <h2>
 		<label>
-                  <button type="button" v-on:click="addItem(menuitem.label)" v-model="mainDish" :value="menuitem.label" />
+                  <button type="button" v-on:click="sendToReceipt(menuitem)" v-model="mainDish" :value="menuitem.label" />
                   {{menuitem.label}} , {{menuitem.price}}:-
 		  
 		</label>
@@ -37,14 +46,14 @@
               <div>
 		Extra: 
 		<label v-for="detail in menuitem.details">
-                  <input type="checkbox" v-model="extras" :value="menuitem.label + '::' + detail.extra" />
+                  <input type="checkbox" :id="menuitem.label + '::' + detail.extra" v-on:click="setValues((menuitem.label + '::' + detail.extra), detail.extra, detail.price)" v-model="extras" :value="menuitem.label + '::' + detail.extra"/>
                   {{detail.extra}}, {{detail.price}}:-
-		</label>      
+		</label>
               </div>
             </div>
             <h2>{{ uiLabels.sideorders }}</h2>
             <label v-for="menuitem in menu.sideorders">
-              <input type="checkbox" name="item[]" :value="menuitem.label" />
+              <button type="button" v-on:click="sendToReceipt(menuitem)" name="item[]" :value="menuitem.label" />
               {{menuitem.label}}, {{menuitem.price}}:-
             </label>
 	  </div>
@@ -53,7 +62,7 @@
 	  <div id="Dryck" class="tabcontent">
 	    <h2>{{ uiLabels.drinks }}</h2>
 	    <label v-for="menuitem in menu.drinks">
-	      <button type="button" v-on:click="addItem(menuitem.label)"name="item[]" :value="menuitem.label" />
+	      <button type="button" v-on:click="sendToReceipt(menuitem)"name="item[]" :value="menuitem.label" />
 	      {{menuitem.label}}, {{menuitem.size}} cl, {{menuitem.price}}:-
 	      <br> </br>
 	    </label>
