@@ -2,6 +2,8 @@
     "ordersFinished" : "Färdiga beställningar",
     "ordersInQueue" : "Beställningar att förbereda",
     "placeOrder" : "Lägg beställning",
+    "cashPayment" : "Kontant",
+    "cardPayment" : "Kort",
     "mains" : "Huvudrätter",
     "sideorders" : "Tillbehör",
     "drinks" : "Drycker",

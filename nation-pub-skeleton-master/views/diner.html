@@ -22,7 +22,68 @@
               </tr>
             </table>
           </div>
-	  <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
+          <table id="putOrder">
+            <tr>
+              <td colspan="2">
+              </td>
+              <td>
+                <table id="payment">
+                  <tr>
+                    <td>
+                      <button class="buttonLayout" v-on:click="openModal()"> {{ uiLabels.cashPayment }}</button>
+                    </td>
+                    <td>
+                      <button class="buttonLayout" v-on:click="openModal2()"> {{ uiLabels.cardPayment }}</button>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+          <!-- The Modal -->
+          <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+              <input id="calcInfo" type="text" disabled />
+              <table id="calcTable">
+                <tr class="calcRow">
+                  <td class="calcData"><button v-on:click="clear()" class="calcButton"> Clear </button></td>
+                  <td colspan="2" id="calcData2"><button v-on:click="back()" class="calcButton"> Backspace </button> </td>
+                </tr>
+                <tr class="calcRow">
+                  <td class="calcData"><button v-on:click="addNum(1)" class="calcButton"> 1 </button></td>
+                  <td class="calcData"><button v-on:click="addNum(2)" class="calcButton"> 2 </button></td>
+                  <td class="calcData"><button v-on:click="addNum(3)" class="calcButton"> 3 </button></td>
+                </tr>
+                <tr class="calcRow">
+                  <td class="calcData"><button v-on:click="addNum(4)" class="calcButton"> 4 </button></td>
+                  <td class="calcData"><button v-on:click="addNum(5)" class="calcButton"> 5 </button></td>
+                  <td class="calcData"><button v-on:click="addNum(6)" class="calcButton"> 6 </button></td>
+                </tr>
+                <tr class="calcRow">
+                  <td class="calcData"><button v-on:click="addNum(7)" class="calcButton"> 7 </button></td>
+                  <td class="calcData"><button v-on:click="addNum(8)" class="calcButton"> 8 </button></td>
+                  <td class="calcData"><button v-on:click="addNum(9)" class="calcButton"> 9 </button></td>
+                </tr>
+                <tr>
+                  <td class="calcData"><button v-on:click="addNum(0)"class="calcButton"> 0 </button></td>
+                  <td colspan="2" class="calcData2"><button v-on:click="addNum(0),addNum(0)" class="calcButton"> 00 </button></td>
+                </tr>
+              </table>
+              <button class="close" v-on:click="closeModal()">OK</button>
+            </div>
+
+          </div>
+          <!-- The Modal -->
+          <div id="myModal2" class="modal">
+            <div class="modal-content2">
+
+              <h3> Waiting for information ... </h3>
+              <h2> Exit by pressing Cancel </h2>
+              <button class="close" v-on:click="closeModal()">Cancel</button>
+            </div>
+          </div>
         </td>
         <td id="orders">
 	  <div class="tab">
