@@ -1,18 +1,11 @@
 /* global sharedVueStuff, Vue, socket */
 'use strict';
 
+//Global variable for orderNumbers
 var oNR = 0;
 
-function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min;
-}
-
+//Function to get the orderNumber
 function getOrderNumber() {
-    // It's probably not a good idea to generate a random order
-    //  number, client-side. 
-    // A better idea would be to let the server decide.
     oNR++;
     return "#" + oNR;
 }
@@ -30,51 +23,38 @@ new Vue({
         calc: 0,
     },
     methods: {
+        //Function to send order to kitchen
         placeOrder: function() {
             if(this.toOrder.length > 0) {
-                var arr = document.getElementsByClassName('ordersInProgress');
+                var arr = document.getElementsByClassName(
+                    'ordersInProgress');
                 var i=arr.length-1;
                 for(i; i>-1; i--) {
                     arr[i].parentNode.removeChild(arr[i]);
                 }
                 this.total = 0;
-                // Here two ways of getting selected items are illustrated
-                // 1. The Vue way, notice the data model declarations
-                //  above
                 
-                //var mainCourse = this.mainDish;
-                //var extras = this.extras;
-                // 2. The old-school way: create an array with values of
-                //  checked items
-                //var theRest = [].filter.call(document.getElementsByName
-                // ('item[]'), function(i) {
-                //  return i.checked;
-                //}).map(function(i) {
-                //  return i.value;
-                //});
-                // OK, it's not really neat to use two different ways
-                //  of accomplishing the same thing
-                // but let's pretend it's for an educational purpose ...
-                //  here comes another no-no:
-                //var orderItems = mainCourse.concat(extras).concat(theRest);
-                // Finally we make use of socket.io's magic to send the
                 //  stuff to the kitchen
-
                 var orderItems = [];
                 var i=0;
                 for(i; i<this.toOrder.length; i++) {
+                    //Testing printouts
                     console.log(this.toOrder[i].thing);
                     console.log(this.toOrder[i].label);
+                    //Error with undefined "thing"
                     if (this.toOrder[i].thing != "drink") {
                         orderItems.push(this.toOrder[i].label);
                     }
                 }
 
-                socket.emit('order', {orderId: getOrderNumber(), orderItems: orderItems});
+                socket.emit('order',
+                            {orderId: getOrderNumber(),
+                             orderItems: orderItems});
                 this.toOrder = [];
                 this.orderNumber++;
             }
         },
+        //Function to send food or drink from menu to receipt
         sendToReceipt: function(item) {
             var orderTable = document.getElementById('currentOrder');
             var newTr  = document.createElement('tr');
@@ -90,7 +70,9 @@ new Vue({
 
             var i=0;
             for(i; i<this.extrasInfo.length; i++) {
-                if ((item.label + '::' + this.extrasInfo[i].name) == this.extrasInfo[i].id) {
+                if ((item.label + '::' + this.extrasInfo[i].name)
+                    == this.extrasInfo[i].id)
+                {
                     txt += "::" + this.extrasInfo[i].name;
                     sum += this.extrasInfo[i].price;
                     document.getElementById(item.label + '::' + this.extrasInfo[i].name).setAttribute('checked', false);
@@ -110,6 +92,7 @@ new Vue({
             this.toOrder.push(order);
             this.total += sum;
         },
+        //Function to set info from checkboxed at click
         setValues: function(id, name, price) {
             var i=0;
             if (this.extrasInfo.length != 0) {
@@ -132,7 +115,7 @@ new Vue({
                 this.extrasInfo.push(newArr);
             }
         },
-        // When the user clicks on the button, open the modal
+        // When the user clicks on the button, open Cash modal
         openModal: function() {
             // Get the modal
             this.calc = 0;
@@ -143,13 +126,14 @@ new Vue({
             
             modal.style.display = "block";
         },
+        //When the user click on the button, open Card Modal
         openModal2: function() {
             // Get the modal
             var modal = document.getElementById('myModal2');
 
             modal.style.display = "block";
         },
-        // When the user clicks on <span> (x), close the modal
+        // When the user clicks on close, close the modal
         closeModal: function() {
             // Get the modal
             var orgTot = this.total;
@@ -172,25 +156,30 @@ new Vue({
             if (orgTot != 0) {
                 if ((currTot === 0) || (currTot < 0)) {
                     if (currTot < 0) {
-                        window.alert("return: " + currTot*(-1) + " kr");
+                        window.alert("return: "
+                                     + currTot*(-1)
+                                     + " kr");
                         this.total = 0;
                     }
                     this.placeOrder();
                 }
             }
         },
+        //Function to add Number to calcModal display
         addNum: function(value) {
             var info = document.getElementById('calcInfo');
 
             var value = this.calc = this.calc*10 + value;
             info.value = value;
         },
+        //Function to clear calc modal display
         clear: function(value) {
             var info = document.getElementById('calcInfo');
 
             var value = this.calc = 0;
             info.value = value;
         },
+        //Function to back 1 step in calc modal display
         back: function() {
             var info = document.getElementById('calcInfo');
 
@@ -200,6 +189,7 @@ new Vue({
     }
 });
 
+//Function to traverse trough tabs in menu
 function openFood(evt, food) {
     // Declare all variables
     var i, tabcontent, tablinks;
@@ -223,6 +213,7 @@ function openFood(evt, food) {
     evt.currentTarget.className += " active";
 }
 
+//Set onclick for the window
 window.onclick = function(event) {
     // Get the modal
     var modal = document.getElementById('myModal');

@@ -1,0 +1,212 @@
+{
+    "foods": [
+        {
+            "order": 1,
+            "label": "Hamburgare",
+            "thing": "food",
+            "price": 65,
+            "details": [
+                { "extra": "Lök",
+                  "price": 0
+                }
+            ]
+        },
+        {
+            "order": 2,
+            "thing": "food",
+            "label": "Ostburgare",
+            "price": 70,
+            "details": [
+                { "extra": "Lök",
+                  "price": 0
+                },
+                { "extra": "Ost",
+                  "price": 10
+                }
+            ]
+        },
+        {
+            "order": 3,
+            "thing": "food",
+            "label": "Veganburgare",
+            "price": 65,
+            "details": [
+                { "extra": "Lök",
+                  "price": 0
+                },
+                { "extra": "Tryffel",
+                  "price": 20
+                },
+                { "extra": "Bacon",
+                  "price": 10
+                }
+            ]
+        }
+    ],
+    "drinks": [
+        {
+            "order": 1,
+            "thing": "drink",
+            "label": "Fullers India Pale Ale",
+            "size": 50,
+            "price": 65
+        },
+        {
+            "order": 2,
+            "thing": "drink",
+            "label": "Fullers ESB",
+            "size": 50,
+            "price": 65
+        },
+        {
+            "order": 3,
+            "thing": "drink",
+            "label": "Brew Dog 5 a.m",
+            "size": 33,
+            "price": 65
+        },
+        {
+            "order": 4,
+            "thing": "drink",
+            "label": "Duvel",
+            "size": 33,
+            "price": 65
+        },
+        {
+            "order": 5,
+            "thing": "drink",
+            "label": "Wisby Oak Porter",
+            "size": 33,
+            "price": 65
+        },
+        {
+            "order": 6,
+            "thing": "drink",
+            "label": "Wisby Klosteröl",
+            "size": 33,
+            "price": 65
+        },
+        {
+            "order": 7,
+            "thing": "drink",
+            "label": "Baron Trenck",
+            "size": 50,
+            "price": 65
+        },
+        {
+            "order": 8,
+            "thing": "drink",
+            "label": "Shabo's Special",
+            "size": 50,
+            "price": 65
+        },
+        {
+            "order": 9,
+            "thing": "drink",
+            "label": "Innis & Gunn Orginal",
+            "size": 33,
+            "price": 65
+        },
+        {
+            "order": 10,
+            "thing": "drink",
+            "label": "Innis & Gunn Toasted Oak IPA",
+            "size": 33,
+            "price": 65
+        },
+        {
+            "order": 11,
+            "thing": "drink",
+            "label": "Liberty Ale",
+            "size": 33,
+            "price": 65
+        },
+        {
+            "order": 12,
+            "thing": "drink",
+            "label": "Anchor Steam",
+            "size": 33,
+            "price": 65
+        },
+        {
+            "order": 13,
+            "thing": "drink",
+            "label": "Nanny State",
+            "size": 33,
+            "price": 65,
+            "details": [
+                {
+                    "non-alcoholic":true
+                }
+            ]
+        },
+        {
+            "order": 14,
+            "thing": "drink",
+            "label": "Störtebeker",
+            "size": 33,
+            "price": 65,
+            "details": [
+                {
+                    "non-alcoholic":true
+                }
+            ]
+        },
+        {
+            "order": 15,
+            "thing": "drink",
+            "label": "Zatec",
+            "size": 33,
+            "price": 65,
+            "details": [
+                {
+                    "non-alcoholic":true,
+                    "gluten-free":true
+                }
+            ]
+        },
+        {
+            "order": 16,
+            "thing": "drink",
+            "label": "Green’s Blond Ale",
+            "size": 33,
+            "price": 50,
+            "details": [
+                {
+                    "non-alcoholic":true,
+                    "gluten-free":true
+                }
+            ]
+        }
+    ],
+    "sideorders": [
+        {
+            "order": 1,
+            "thing": "food",
+            "label": "Strips",
+            "price": 20,
+            "details": [
+                { "extra": "Smält ost",
+                  "price": 10
+                },
+                { "extra": "Stekt lök",
+                  "price": 10
+                }
+            ]
+        },
+        {
+            "order": 1,
+            "thing": "food",
+            "label": "Nachos",
+            "price": 30,
+            "details": [
+                { "extra": "Smält ost",
+                  "price": 10
+                },
+                { "extra": "Salsa",
+                  "price": 10
+                }
+            ]
+        }
+    ]
+}

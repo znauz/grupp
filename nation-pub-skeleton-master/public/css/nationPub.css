@@ -1,67 +1,13 @@
 /* Stylesheet document */
 @import 'https://fonts.googleapis.com/css?family=Pacifico|Dosis';
 
+/*Id of receipt table*/
 #ordering {
     width: 100%;
     height:100%;
 }
 
-#currentOrder {
-    background-color: white;
-    border-style: solid;
-}
-
-.orderData {
-    width: 15%;
-    height: 25px;
-    border-top-style: solid;
-    border-left-style: solid;
-    border-bottom-style: solid;
-}
-
-.orderPrice {
-    width: 15%;
-    height: 25px;
-    border-top-style: solid;
-    border-right-style: solid;
-    border-bottom-style: solid;
-}
-
-#totalRepresentation {
-    width: 100%;
-    text-align: center;
-    vertical-align: middle;
-    background-color: white;
-}
-
-#totalTable {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.totalSummation {
-    width: 50%;
-    text-align: center;
-}
-
-#putOrder {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#payment {
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.buttonLayout {
-    text-aling: right;
-    margin-left: auto;
-    margin-right: auto;
-}
-
+/*class for */
 .layout {
     width: 25%;
     height: 50%;
@@ -69,28 +15,199 @@
     vertical-align: text-top;
 }
 
+/*Id for receipt area*/
 #receipt {
     background-color: green;
 }
 
+/*Id for dynamically generated order table*/
+#currentOrder {
+    background-color: white;
+    border-style: solid;
+}
+
+/*Id for total cost area*/
+#totalRepresentation {
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+    background-color: white;
+}
+
+/*Id for total table*/
+#totalTable {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*Class for the table elements of total table*/
+.totalSummation {
+    width: 50%;
+    text-align: center;
+}
+
+/*Id for button table at receipt area*/
+#payment {
+    width: 100%;
+    height: 4%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*Class for td in former table*/
+.paymentTd {
+    width: 50%;
+    height: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/*Class for buttons in former table*/
+.buttonLayout {
+    width: 100%;
+    height: 40px;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    vertical-align: middle;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+ /* The Modal (background) for all modals (popup windows)*/
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    text-align: center;
+    vertical-align: middle;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box for cash popup */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    text-align: center;
+    vertical-align: middle;
+    width: 30%;
+    height: 60%;
+    border-radius: 7%;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #333333;
+}
+
+/*Id of calcInfo text box*/
+#calcInfo {
+    width: 80%;
+    height: 20%;
+    text-align: right;
+    font-size: 35px;
+    vertical-align: middle;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/*Id of calc table with buttons*/
+#calcTable {
+    text-align: center;
+    vertical-align: middle;
+    width: 80%;
+    height: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    table-layout: fixed;
+}
+
+/*Class of the calc rows in calc table*/
+.calcRow {
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+    height: 20%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin:bottom: auto;
+}
+
+/*Single cell calc data*/
+.calcData {
+    width: 33%;
+    height: 20%;
+    text-align: center;
+    vertical-align: middle;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+/*Class for the buttons in calc table*/
+.calcButton {
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    text-align: center;
+    vertical-align: middle;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+/*id of Double cell calc data*/
+#calcData2 {
+    width: 66%;
+    height: 20%;
+    text-align: center;
+    vertical-align: middle;
+    margin-top: auto;
+    margin: bottom:auto;
+}
+
+/* The Close Button class for popup windows */
+.close {
+    width: 50%;
+    height: 20%;
+    text-align: center;
+    vertical-align: middle;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Modal Content/Box for card popup */
+.modal-content2 {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    text-align: center;
+    vertical-align: middle;
+    width: 30%;
+    height: 30%;
+    border-radius: 7%;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #333333;
+}
+
+/*Id of orders area*/
 #orders {
     width: 50%;
     height: 50%;
     vertical-align: text-top;
     text-align: center;
     backhground-color: #0000ff;
-}
-
-#mealOrders {
-    font-size: 11px;
-}
-
-#progress {
-    background-color: #00ff00;
-}
-
-button:hover {
-    cursor: pointer;
 }
 
 /* Style the tab */
@@ -134,125 +251,121 @@ div.tab a:focus, .active {
     height: 1000px;
 }
 
- /* The Modal (background) */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    text-align: center;
-    vertical-align: middle;
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+/*Class of main food orders (needs better name)*/
+.stuff {
+    width: 32%;
+    height: 100%;
+    float: left;
+    display: inline;
+    border: solid;
+    border-width: 3px;
+    border-color: #000000;
+    border-radius: 10px;
 }
 
-/* Modal Content/Box */
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    text-align: center;
-    vertical-align: middle;
-    width: 30%;
-    height: 60%;
-    border-radius: 7%;
-    border-style: solid;
-    border-width: 5px;
-    border-color: #333333;
-}
-
-.modal-content2 {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    text-align: center;
-    vertical-align: middle;
-    width: 30%;
-    height: 30%;
-    border-radius: 7%;
-    border-style: solid;
-    border-width: 5px;
-    border-color: #333333;
-}
-
-#calcInfo {
-    width: 80%;
-    height: 20%;
-    text-align: right;
-    font-size: 35px;
-    vertical-align: middle;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-#calcTable {
-    text-align: center;
-    vertical-align: middle;
-    width: 80%;
-    height: 60%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: auto;
-    margin-bottom: auto;
-    table-layout: fixed;
-}
-
-.calcRow {
-    text-align: center;
-    vertical-align: middle;
+/*class for buttons inside stuff class (-||-)*/
+.stuffButtons {
     width: 100%;
-    height: 20%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: auto;
-    margin:bottom: auto;
+    height: 50px;
 }
 
-.calcData {
-    width: 33%;
-    height: 20%;
-    text-align: center;
-    vertical-align: middle;
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
-#calcData2 {
-    width: 66%;
-    height: 20%;
-    text-align: center;
-    vertical-align: middle;
-    margin-top: auto;
-    margin: bottom:auto;
-}
-
-.calcButton {
+/*Class for displaying extras in main menu orders*/
+.extrasPresentation {
     width: 100%;
     height: 100%;
-    font-size: 20px;
     text-align: center;
-    vertical-align: middle;
+    margin: auto;
+    display: table;
+}
+
+/*Class for the labels with extras*/
+.labelPresentation {
+    text-align: center;
+    width: 31%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: auto;
+    margin-botom: auto;
+    display: inline;
+    float: left;
+    border: solid;
+    border-width: 2px;
+    border-color: green;
+    border-radius: 10px;
+}
+
+/*Class for displaying sideorders*/
+.sideOrderLabelPres {
+    width: 49%;
+    height: 140px;
     margin-top: auto;
     margin-bottom: auto;
+    float: left;
+    display: inline;
+    border: solid;
+    border-width: 3px;
+    border-color: #000000;
+    border-radius: 10px;
 }
 
-/* The Close Button */
-.close {
-    width: 50%;
-    height: 20%;
-    text-align: center;
-    vertical-align: middle;
-    color: #aaa;
-    font-size: 28px;
-    font-weight: bold;
+/*Class for displaying sideorder buttons*/
+.sideOrderButton {
+    width: 100%;
+    height: 100%;
 }
 
+/*Class for displaying drinks*/
+.drinks {
+    width: 33%;
+    height: 8%;
+    margin-right: auto;
+    margin-left: auto;
+    float: left;
+    display: inline;
+}
+
+/*Class for drink buttons*/
+.drinkButtons {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+
+/*Id for waiting orders area*/
+#progress {
+    background-color: #00ff00;
+}
+
+/*Class which is given to order elements in receipt area*/
+.orderData {
+    width: 15%;
+    height: 25px;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-bottom-style: solid;
+}
+
+/*Class which is given to order price td in receipt area*/
+.orderPrice {
+    width: 15%;
+    height: 25px;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+}
+
+/*Information about what happens when hovering over button*/
+button:hover {
+    cursor: pointer;
+}
+
+/*Transformation of checkboxes to make them bigger*/
+input[type=checkbox] {
+    transform: scale(1.5);
+}
+
+/*Information about what happens when you hover/focus 
+  over close buttons in modals*/
 .close:hover,
 .close:focus {
     color: black;

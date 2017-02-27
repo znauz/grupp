@@ -1,80 +1,154 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- import docLoaded function -->
+    <script src="js/script.js"></script>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
     <title>Nationsmatsalen</title>
-    <link rel="stylesheet" href="css/nationPub.css">
+    <link rel="stylesheet"
+          href="css/nationPub.css">
+    <!-- Call docLoaded functions -->
+    <script>
+      docLoaded(indexPageLoaded);
+    </script>
   </head>
   <body>
 
     <!--Receipt/kvitto-->
+    <!-- Table consisting of sinlge table row -->
     <table id="ordering">
       <tr>
+        <!-- Table data 1 is receipt -->
         <td class="layout" id="receipt">
+          
+          <!-- header for receipt area -->
           <p> Beställning: </p>
+          
+          <!-- Dynamically generated table after added items -->
           <table id="currentOrder"> </table>
+          
+          <!-- Summation (total cost) table data -->
           <div id="totalRepresentation">
             <table id="totalTable">
               <tr>
-                <td class="totalSummation"><h3>Total:</h3></td>
-                <td class="totalSummation"><h3> {{total}} kr </h3></td>
+                <td class="totalSummation">
+                  <h3>Total:</h3>
+                </td>
+                <td class="totalSummation">
+                  <h3> {{total}} kr </h3>
+                </td>
               </tr>
             </table>
           </div>
-          <table id="putOrder">
+
+          <!-- Table with cash and card buttons -->
+          <table id="payment">
             <tr>
-              <td colspan="2">
+              
+              <td class="paymentTd">
+                <button class="buttonLayout"
+                        v-on:click="openModal()">
+                  {{ uiLabels.cashPayment }}
+                </button>
               </td>
-              <td>
-                <table id="payment">
-                  <tr>
-                    <td>
-                      <button class="buttonLayout" v-on:click="openModal()"> {{ uiLabels.cashPayment }}</button>
-                    </td>
-                    <td>
-                      <button class="buttonLayout" v-on:click="openModal2()"> {{ uiLabels.cardPayment }}</button>
-                    </td>
-                  </tr>
-                </table>
+              
+              <td class="paymentTd">
+                <button class="buttonLayout"
+                        v-on:click="openModal2()">
+                  {{ uiLabels.cardPayment }}
+                </button>
               </td>
+              
             </tr>
           </table>
-          <!-- The Modal -->
+          
+          <!-- The Modal1 (Pop up window when cash button pressed)-->
           <div id="myModal" class="modal">
-
-            <!-- Modal content -->
+            <!-- Content of Cash popup window -->
             <div class="modal-content">
+              
+              <!-- Text window with calc info -->
               <input id="calcInfo" type="text" disabled />
+
+              <!-- Table with the cash calc buttons -->
               <table id="calcTable">
                 <tr class="calcRow">
-                  <td class="calcData"><button v-on:click="clear()" class="calcButton"> Clear </button></td>
-                  <td colspan="2" id="calcData2"><button v-on:click="back()" class="calcButton"> Backspace </button> </td>
+                  <td class="calcData">
+                    <button v-on:click="clear()"
+                            class="calcButton"> Clear </button>
+                  </td>
+                  <td colspan="2"
+                      id="calcData2">
+                    <button v-on:click="back()"
+                            class="calcButton"> Backspace </button>
+                  </td>
                 </tr>
+                
                 <tr class="calcRow">
-                  <td class="calcData"><button v-on:click="addNum(1)" class="calcButton"> 1 </button></td>
-                  <td class="calcData"><button v-on:click="addNum(2)" class="calcButton"> 2 </button></td>
-                  <td class="calcData"><button v-on:click="addNum(3)" class="calcButton"> 3 </button></td>
+                  <td class="calcData">
+                    <button v-on:click="addNum(1)"
+                            class="calcButton"> 1 </button>
+                  </td>
+                  <td class="calcData">
+                    <button v-on:click="addNum(2)"
+                            class="calcButton"> 2 </button>
+                  </td>
+                  <td class="calcData">
+                    <button v-on:click="addNum(3)"
+                            class="calcButton"> 3 </button>
+                  </td>
                 </tr>
+                
                 <tr class="calcRow">
-                  <td class="calcData"><button v-on:click="addNum(4)" class="calcButton"> 4 </button></td>
-                  <td class="calcData"><button v-on:click="addNum(5)" class="calcButton"> 5 </button></td>
-                  <td class="calcData"><button v-on:click="addNum(6)" class="calcButton"> 6 </button></td>
+                  <td class="calcData">
+                    <button v-on:click="addNum(4)"
+                            class="calcButton"> 4 </button>
+                  </td>
+                  <td class="calcData">
+                    <button v-on:click="addNum(5)"
+                            class="calcButton"> 5 </button>
+                  </td>
+                  <td class="calcData">
+                    <button v-on:click="addNum(6)"
+                            class="calcButton"> 6 </button>
+                  </td>
                 </tr>
+                
                 <tr class="calcRow">
-                  <td class="calcData"><button v-on:click="addNum(7)" class="calcButton"> 7 </button></td>
-                  <td class="calcData"><button v-on:click="addNum(8)" class="calcButton"> 8 </button></td>
-                  <td class="calcData"><button v-on:click="addNum(9)" class="calcButton"> 9 </button></td>
+                  <td class="calcData">
+                    <button v-on:click="addNum(7)"
+                            class="calcButton"> 7 </button>
+                  </td>
+                  <td class="calcData">
+                    <button v-on:click="addNum(8)"
+                            class="calcButton"> 8 </button>
+                  </td>
+                  <td class="calcData">
+                    <button v-on:click="addNum(9)"
+                            class="calcButton"> 9 </button>
+                  </td>
                 </tr>
+                
                 <tr>
-                  <td class="calcData"><button v-on:click="addNum(0)"class="calcButton"> 0 </button></td>
-                  <td colspan="2" class="calcData2"><button v-on:click="addNum(0),addNum(0)" class="calcButton"> 00 </button></td>
+                  <td class="calcData">
+                    <button v-on:click="addNum(0)"
+                            class="calcButton"> 0 </button>
+                  </td>
+                  <td colspan="2">
+                    <button v-on:click="addNum(0),addNum(0)"
+                            class="calcButton"> 00 </button>
+                  </td>
                 </tr>
               </table>
-              <button class="close" v-on:click="closeModal()">OK</button>
-            </div>
 
+              <!-- Button to close the popup window -->
+              <button class="close"
+                      v-on:click="closeModal()">OK</button>
+            </div>
           </div>
+          
           <!-- The Modal -->
           <div id="myModal2" class="modal">
             <div class="modal-content2">
@@ -85,63 +159,117 @@
             </div>
           </div>
         </td>
+        <!-- End of receipt area -->
+
+        <!-- Menu area -->
         <td id="orders">
 	  <div class="tab">
-	    <a href="javascript:void(0)" class="tablinks" onclick="openFood(event, 'Mat')">Mat</a>
-	    <a href="javascript:void(0)" class="tablinks" onclick="openFood(event, 'Dryck')">Dryck</a>
+	    <a href="javascript:void(0)"
+               class="tablinks"
+               onclick="openFood(event, 'Mat')">Mat</a>
+	    <a href="javascript:void(0)"
+               class="tablinks"
+               onclick="openFood(event, 'Dryck')">Dryck</a>
 	  </div>
 
 	  <!--MAT-TAB -->
 	  <div id="Mat" class="tabcontent" style="display: block;">
 	    <h2>Emil's Burgare's</h2>
+
+            <!-- Main Food order display area -->
             <div id="mealOrders" v-for="menuitem in menu.foods">
-              <h2>
-		<label>
-                  <button type="button" v-on:click="sendToReceipt(menuitem)" v-model="mainDish" :value="menuitem.label" />
-                  {{menuitem.label}} , {{menuitem.price}}:-
-		  
-		</label>
-		
-              </h2>
-	      
-              <div>
-		Extra: 
-		<label v-for="detail in menuitem.details">
-                  <input type="checkbox" :id="menuitem.label + '::' + detail.extra" v-on:click="setValues((menuitem.label + '::' + detail.extra), detail.extra, detail.price)" v-model="extras" :value="menuitem.label + '::' + detail.extra"/>
-                  {{detail.extra}}, {{detail.price}}:-
-		</label>
+
+              <!-- Specific class for displaying in pair of 3 -->
+              <div class="stuff">
+                <h2>
+		  <label>
+                    <button class="stuffButtons"
+                            type="button"
+                            v-on:click="sendToReceipt(menuitem)"
+                            v-model="mainDish"
+                            :value="menuitem.label" />
+                    {{menuitem.label}} , {{menuitem.price}}:-
+		  </label>
+                </h2>
+
+                <!-- Display area for extras for individual foods -->
+                <h2> Extra: </h2>
+                <div class="extrasPresentation">
+		  <label class="labelPresentation"
+                         v-for="detail in menuitem.details">
+                    <input type="checkbox"
+                           :id="menuitem.label + 
+                                '::' + detail.extra"
+                           v-on:click="setValues((menuitem.label 
+                                       + '::' 
+                                       + detail.extra), 
+                                       detail.extra, 
+                                       detail.price)"
+                           v-model="extras"
+                           :value="menuitem.label 
+                                   + '::' 
+                                   + detail.extra"/>
+                    <br> </br>
+                    {{detail.extra}}, {{detail.price}}:-
+		  </label>
+                </div>
               </div>
+              
             </div>
+
+            <!-- Sideorders display area -->
             <h2>{{ uiLabels.sideorders }}</h2>
-            <label v-for="menuitem in menu.sideorders">
-              <button type="button" v-on:click="sendToReceipt(menuitem)" name="item[]" :value="menuitem.label" />
+            <label class="sideOrderLabelPres"
+                   v-for="menuitem in menu.sideorders">
+              <button class="sideOrderButton"
+                      type="button"
+                      v-on:click="sendToReceipt(menuitem)"
+                      name="item[]"
+                      :value="menuitem.label" />
               {{menuitem.label}}, {{menuitem.price}}:-
             </label>
 	  </div>
 
 	  <!--DRYCKER-TAB -->
-	  <div id="Dryck" class="tabcontent">
+	  <div id="Dryck"
+               class="tabcontent">
 	    <h2>{{ uiLabels.drinks }}</h2>
-	    <label v-for="menuitem in menu.drinks">
-	      <button type="button" v-on:click="sendToReceipt(menuitem)"name="item[]" :value="menuitem.label" />
-	      {{menuitem.label}}, {{menuitem.size}} cl, {{menuitem.price}}:-
+	    <label class="drinks"
+                   v-for="menuitem in menu.drinks">
+	      <button class="drinkButtons"
+                      type="button"
+                      v-on:click="sendToReceipt(menuitem)"
+                      name="item[]"
+                      :value="menuitem.label" />
+	      {{menuitem.label}},
+              <br> </br>
+              {{menuitem.size}} cl, {{menuitem.price}}:-
 	      <br> </br>
 	    </label>
-	    
 	  </div>
         </td>
+        <!-- End of menu orders -->
 
 	<!--BESTÄLLNINGAR -->
-        <td class="layout" id="progress">
+        <td class="layout"
+            id="progress">
           <h2> Väntande beställningar </h2>
           <h2>{{ uiLabels.ordersInProgress }}</h2>
           <ol>
-            <li v-for="(item, key) in orders" v-if="!item.done"> {{ key }} : {{ item.orderItems.join(', ') }}</li>
+            <li v-for="(item, key) in orders"
+                v-if="!item.done">
+              {{ key }} : {{ item.orderItems.join(', ') }}
+            </li>
           </ol>
+          
           <h2>{{ uiLabels.ordersFinished }}</h2>
           <ol>
-            <li v-for="(item, key) in orders" v-if="item.done"> {{ key }} : {{ item.orderItems.join(', ') }}</li>
+            <li v-for="(item, key) in orders"
+                v-if="item.done">
+              {{ key }} : {{ item.orderItems.join(', ') }}
+            </li>
           </ol>
+          
         </td>
       </tr>
     </table>
