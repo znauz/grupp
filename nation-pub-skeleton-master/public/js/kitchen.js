@@ -8,6 +8,12 @@ new Vue({
         markDone: function(orderid) {
             this.orders[orderid].done = true;
             socket.emit("orderDone", orderid);
-        }
+        },
+	markFinished: function(orderid) {
+	    
+	    console.log(orderid);
+	    (this.orders).splice(orderid, 1);
+	    socket.emit("orderFinished", orderid);
+	}
     }
 });

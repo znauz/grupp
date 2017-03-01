@@ -7,23 +7,35 @@
     <link rel="stylesheet" href="css/nationPub.css">
   </head>
   <body>
-    <div id="orders">
-      <h1>{{ uiLabels.ordersInQueue }}</h1>
-      <ol>
-        <li v-for="(item, key) in orders" v-if="!item.done"> 
-          {{ key }} : {{ item.orderItems.join(', ') }} 
-          <button v-on:click="markDone(key)">
-            {{uiLabels.ready}}
-          </button>
-        </li>
-      </ol>
-      <h1>{{ uiLabels.ordersFinished }}</h1>
-      <ol>
-        <li v-for="(item, key) in orders" v-if="item.done"> 
-          {{ key }} : {{ item.orderItems.join(', ') }}
-        </li>
-      </ol>
-    </div>
+    <table id="orders">
+      
+      <tr>
+	<td id="pendingOrders">
+	  
+
+	  <h1>Beställningar att förbereda</h1>
+	  <ol>
+            <li v-for="(item, key) in orders" v-if="!item.done"> 
+              {{ key }} : {{ item.orderItems.join(', ') }}
+	      <button class="markDone" v-on:click="markDone(key)">
+		Klar
+              </button>
+
+            </li>
+	  </ol>
+	</td>
+	<td id="finishedOrders">
+	  <h1 >Färdiga beställningar</h1>
+	  <ol>
+            <li v-for="(item, key) in orders" v-if="item.done"> 
+              {{ key }} : {{ item.orderItems.join(', ') }}
+	      
+            </li>
+	  </ol>
+	</td>
+      </tr>
+     
+    </table>
     <script src="/vue/vue.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/nationPub.js"></script>

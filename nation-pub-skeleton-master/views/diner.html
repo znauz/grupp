@@ -24,7 +24,40 @@
         <td class="layout" id="receipt">
           
           <!-- header for receipt area -->
-          <p> Beställning: </p>
+	   <!-- Table with cash and card buttons -->
+          <table id="payment">
+            <tr>
+              
+              <td class="paymentTd">
+                <button class="buttonLayout"
+                        v-on:click="openModal()">
+                  {{ uiLabels.cashPayment }}
+                </button>
+              </td>
+              
+              <td class="paymentTd">
+                <button class="buttonLayout"
+                        v-on:click="placeOrder()">
+                  {{ uiLabels.cardPayment }}
+                </button>
+              </td>
+              
+            </tr>
+          </table>
+          <select id="tableDrop">	    
+	    <option value="0" selected="true" disabled>-- Välj bord -- </option>
+	    <option value="1" class="tableDropOption">Bord 1</option>
+	    <option value="2" class="tableDropOption">Bord 2</option>
+	    <option value="3" class="tableDropOption">Bord 3</option>
+	    <option value="4" class="tableDropOption">Bord 4</option>
+	    <option value="5" class="tableDropOption">Bord 5</option>
+	    <option value="6" class="tableDropOption">Bord 6</option>
+	    <option value="7" class="tableDropOption">Bord 7</option>
+	    <option value="8" class="tableDropOption">Bord 8</option>
+	    <option value="9" class="tableDropOption">Bord 9</option>
+	    <option value="10" class="tableDropOption">Bord 10</option>
+	    <option value="11" class="tableDropOption">Bord 11</option>
+	    </select>
           
           <!-- Dynamically generated table after added items -->
           <table id="currentOrder"> </table>
@@ -43,26 +76,7 @@
             </table>
           </div>
 
-          <!-- Table with cash and card buttons -->
-          <table id="payment">
-            <tr>
-              
-              <td class="paymentTd">
-                <button class="buttonLayout"
-                        v-on:click="openModal()">
-                  {{ uiLabels.cashPayment }}
-                </button>
-              </td>
-              
-              <td class="paymentTd">
-                <button class="buttonLayout"
-                        v-on:click="openModal2()">
-                  {{ uiLabels.cardPayment }}
-                </button>
-              </td>
-              
-            </tr>
-          </table>
+         
           
           <!-- The Modal1 (Pop up window when cash button pressed)-->
           <div id="myModal" class="modal">
@@ -162,7 +176,7 @@
         <!-- End of receipt area -->
 
         <!-- Menu area -->
-        <td id="orders">
+        <td id="ordersCool">
 	  <div class="tab">
 	    <a href="javascript:void(0)"
                class="tablinks"
@@ -174,7 +188,6 @@
 
 	  <!--MAT-TAB -->
 	  <div id="Mat" class="tabcontent" style="display: block;">
-	    <h2>Emil's Burgare's</h2>
 
             <!-- Main Food order display area -->
             <div id="mealOrders" v-for="menuitem in menu.foods">
@@ -233,7 +246,6 @@
 	  <!--DRYCKER-TAB -->
 	  <div id="Dryck"
                class="tabcontent">
-	    <h2>{{ uiLabels.drinks }}</h2>
 	    <label class="drinks"
                    v-for="menuitem in menu.drinks">
 	      <button class="drinkButtons"
@@ -254,21 +266,20 @@
         <td class="layout"
             id="progress">
           <h2> Väntande beställningar </h2>
-          <h2>{{ uiLabels.ordersInProgress }}</h2>
           <ol>
             <li v-for="(item, key) in orders"
                 v-if="!item.done">
               {{ key }} : {{ item.orderItems.join(', ') }}
             </li>
           </ol>
-          
-          <h2>{{ uiLabels.ordersFinished }}</h2>
+          <h2>Färdiga beställningar</h2>
           <ol>
             <li v-for="(item, key) in orders"
                 v-if="item.done">
               {{ key }} : {{ item.orderItems.join(', ') }}
             </li>
           </ol>
+	  
           
         </td>
       </tr>

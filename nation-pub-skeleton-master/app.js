@@ -40,11 +40,18 @@ var orders = function() {
         orders[orderId].done = true;
     };
 
+    //Här försökte vi göra en funktion att ta bort färiga ordrar
+    /*var markFinished = function(orderId) {
+	
+	orders.splice(orderId, 1);
+    };*/
+
     //expose functions
     return {
         addOrder : addOrder,
         getAll : getAll,
-        markDone : markDone
+        markDone : markDone,
+	markFinished : markFinished
     };
 }(); // instantiate the class immediately
 
@@ -77,7 +84,13 @@ io.on('connection', function(socket) {
         orders.markDone(orderId);
         io.emit('currentQueue', orders.getAll());
     });
+
+    socket.on('orderFinished', function(orderId) {
+	orders.markFinished(orderId);
+	io.emit('currentQueue', orders.getAll());
+    });
 });
+    
 
 http.listen(app.get('port'), function() {
     console.log('Server listening on port ' + app.get('port'));

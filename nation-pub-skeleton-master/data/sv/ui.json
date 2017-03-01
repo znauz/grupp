@@ -1,5 +1,6 @@
 {
     "ordersFinished" : "Färdiga beställningar",
+    "ordersInMaking" : "Pågående beställningar",
     "ordersInQueue" : "Beställningar att förbereda",
     "placeOrder" : "Lägg beställning",
     "cashPayment" : "Kontant",
@@ -8,4 +9,5 @@
     "sideorders" : "Tillbehör",
     "drinks" : "Drycker",
     "ready" : "Klart"
+
 }

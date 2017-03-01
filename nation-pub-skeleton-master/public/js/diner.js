@@ -26,6 +26,18 @@ new Vue({
         //Function to send order to kitchen
         placeOrder: function() {
             if(this.toOrder.length > 0) {
+		var tableNumber = document.getElementById('tableDrop');
+		var tableValue = tableNumber.options[tableNumber.selectedIndex].value;
+		if(tableValue > 0){
+
+		if(tableValue.disabled) {
+		    console.log("Omg disabled wtf");
+		    
+		}
+
+	
+		var tableString = "Bord: " + tableValue;
+
                 var arr = document.getElementsByClassName(
                     'ordersInProgress');
                 var i=arr.length-1;
@@ -36,6 +48,7 @@ new Vue({
                 
                 //  stuff to the kitchen
                 var orderItems = [];
+		orderItems.push(tableString);
                 var i=0;
                 for(i; i<this.toOrder.length; i++) {
                     //Testing printouts
@@ -46,12 +59,16 @@ new Vue({
                         orderItems.push(this.toOrder[i].label);
                     }
                 }
-
+		
                 socket.emit('order',
                             {orderId: getOrderNumber(),
                              orderItems: orderItems});
                 this.toOrder = [];
-                this.orderNumber++;
+                    this.orderNumber++;
+		}
+		else {
+		    window.alert("välj ett bord");
+		}
             }
         },
         //Function to send food or drink from menu to receipt
