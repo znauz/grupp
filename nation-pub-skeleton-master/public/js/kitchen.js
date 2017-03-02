@@ -12,7 +12,8 @@ new Vue({
 	markFinished: function(orderid) {
 	    
 	    console.log(orderid);
-	    (this.orders).splice(orderid, 1);
+            delete this.orders[orderid];
+	    //(this.orders).splice(orderid, 1);
 	    socket.emit("orderFinished", orderid);
 	}
     }

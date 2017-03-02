@@ -214,7 +214,7 @@
 
 /*Id of orders area*/
 #orders {
-
+    width: 100%;
     vertical-align: text-top;
     text-align: center;
     background-color: #18c9cf;

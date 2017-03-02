@@ -18,7 +18,7 @@
             <li v-for="(item, key) in orders" v-if="!item.done"> 
               {{ key }} : {{ item.orderItems.join(', ') }}
 	      <button class="markDone" v-on:click="markDone(key)">
-		Klar
+		Ok
               </button>
 
             </li>
@@ -29,7 +29,9 @@
 	  <ol>
             <li v-for="(item, key) in orders" v-if="item.done"> 
               {{ key }} : {{ item.orderItems.join(', ') }}
-	      
+	       <button class="markDone" v-on:click="markFinished(key)">
+		Klar
+              </button>
             </li>
 	  </ol>
 	</td>

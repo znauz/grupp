@@ -41,10 +41,11 @@ var orders = function() {
     };
 
     //Här försökte vi göra en funktion att ta bort färiga ordrar
-    /*var markFinished = function(orderId) {
-	
-	orders.splice(orderId, 1);
-    };*/
+    var markFinished = function(orderId) {
+
+        delete orders[orderId];
+	//orders.splice(orderId, 1);
+    };
 
     //expose functions
     return {
