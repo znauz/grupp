@@ -62,10 +62,13 @@
     margin-right: auto;
     margin-left: auto;
 }
+
+/*Class for table names in drop down table menu*/
 .tableDropOption {
-    font-size: 40px;
+    font-size: 180%;
 }
 
+/*Id for drop down table menu*/
 #tableDrop {
     width: 98%;
     height: 50px;
@@ -407,10 +410,6 @@ input[type=checkbox] {
     text-decoration: none;
     cursor: pointer;
 }
-
-
-
-
 
 .markDone {
 
